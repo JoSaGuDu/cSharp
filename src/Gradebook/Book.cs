@@ -18,7 +18,13 @@ namespace Gradebook
         //Behavior-methods
         public void AddGrade(double grade)
         {
+            if (grade <= 100 && grade >= 0)
+            {
             grades.Add(grade);
+            }
+            else {
+                Console.WriteLine("Invalid Grade");
+            }
         }
         //I need to compute the statistics
         public double CalculateAvg
