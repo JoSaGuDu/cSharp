@@ -32,7 +32,29 @@ namespace Gradebook
                     case "y":             
                         Console.WriteLine("Please enter a grade");
                         var grade = Console.ReadLine();
-                        book.AddGrade(double.Parse(grade));
+                        try 
+                        {
+                            book.AddGrade(double.Parse(grade));
+                        }
+                        /* catch(Exception ex)//Catch the specific exception you expect additionally to this generic exeption cath 
+                        {
+                            Console.WriteLine(ex.Message);
+                        } Reemplaced by the specific catchers*/
+                        catch(ArgumentException ex)//Catching the specific exception I spect
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        catch(FormatException ex)//Catch the specific exception you expect additionally to this generic exeption cath 
+                        {
+                            Console.WriteLine(ex.Message);
+                        }  
+                        finally
+                        {
+                            //Write here any code to be exceuted always that the exception is trown.
+                            Console.WriteLine("Finally, please try again!");
+                            //close sockets...
+                            //clean memory...
+                        }
                         Console.WriteLine($"There are {grades.Count} grades in {book.Name}");
                         Console.WriteLine("Press \"q\" anytime to quit");
                         break;

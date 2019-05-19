@@ -23,7 +23,8 @@ namespace Gradebook
             grades.Add(grade);
             }
             else {
-                Console.WriteLine("Invalid Grade");
+                Console.WriteLine("Invalid Grade");//replaced by the exception management.
+                throw new ArgumentException($"Invalid argument for {nameof(grade)}");
             }
         }
 
