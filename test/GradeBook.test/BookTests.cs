@@ -25,6 +25,7 @@ namespace Gradebook.test
             Assert.Equal(93.5, result.HigherGrade);
             Assert.Equal(3.5, result.LowerGrade);
             Assert.Equal(50.16, result.Average, 2);
+            Assert.Equal('F',result.LetterAVG);
 
         }
 

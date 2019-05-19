@@ -31,7 +31,7 @@ namespace Gradebook
         {
             switch (letterGrade)
             {
-                case 'A':
+                case 'A'://Be sure using single quotes for char. Otherwise it will be compiled as a string.
                     AddGrade(90);
                     break;
                 case 'B':
@@ -97,12 +97,43 @@ namespace Gradebook
             }
         }
 
+        public char CalcLetterGrade(double grade)
+        {
+            switch (grade)
+            {
+                case var g when g >= 90.0: 
+                    letter_grade = 'A';
+                    break;
+
+                case var g when g >= 80.0: 
+                    letter_grade = 'B';
+                    break;
+
+                case var g when g >= 70.0: 
+                    letter_grade = 'C';
+                    break;
+
+                case var g when g >= 60.0: 
+                    letter_grade = 'D';
+                    break;
+
+                case var g when g < 60.0: 
+                    letter_grade = 'F';
+                    break;
+
+                default:
+                    Console.WriteLine("Letter AVG cant be calculated. Check input");
+                break;    
+            }
+            return letter_grade;
+        }
         public Statistics GetStatistics()
         {
             var result = new Statistics();
             result.Average = this.CalculateAvg;
             result.HigherGrade = this.CalcHigherGrade;
             result.LowerGrade = this.CalclowGrade;
+            result.LetterAVG = this.CalcLetterGrade(result.Average);
             return result;
         }
         public void showStatistics()
@@ -122,5 +153,6 @@ namespace Gradebook
         public string Name;
         public double high_grade;
         public double low_grade;
+        public char letter_grade;
     }
 }
