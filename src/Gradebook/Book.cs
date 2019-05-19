@@ -142,6 +142,7 @@ namespace Gradebook
             Console.WriteLine($"The AVG grade is: {stats.Average:N2}");//result:Nx is formating the value result to display on digit presicsion.
             Console.WriteLine($"The Higher grade is: {stats.HigherGrade:N2}");
             Console.WriteLine($"The Lower grade is: {stats.LowerGrade:N2}");
+            Console.WriteLine($"The AVG lettre grade is: {stats.LetterAVG}");
         }
         //I need to retrieve the grades
         public List<double> GetGrades()
