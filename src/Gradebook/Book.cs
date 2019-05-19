@@ -27,8 +27,7 @@ namespace Gradebook
                 throw new ArgumentException($"Invalid argument for {nameof(grade)}");
             }
         }
-
-        public void AddGradeLetter(char letterGrade)
+        public void AddGrade(char letterGrade)//Overloaded method with different signature but same name
         {
             switch (letterGrade)
             {
