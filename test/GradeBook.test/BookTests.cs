@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 //remember to add references if the class is in a different project: dotnet add reference ../path/to/external/prjectName.csproj
@@ -33,18 +34,12 @@ namespace Gradebook.test
             //arange section: declare and arrange all data required for the test
             //I need an instance of the class I want to test
             var book = new Book("");
-            book.AddGrade(105);
-            book.AddGrade(-5);
-            book.AddGrade(93.5);
-
+            
             //act section: perform the unit to be tested
-            var result = book.GetStatistics();
+            book.AddGrade(105);
+            List<double> result = book.GetGrades();
             //assert section: perform the actual test
-            Assert.Equal(93.5, result.HigherGrade);
-            Assert.Equal(3.5, result.LowerGrade);
-            Assert.Equal(50.16, result.Average, 2);
-            Assert.
-
+           Assert.True(result.Count == 0);
         }
     }
 }
