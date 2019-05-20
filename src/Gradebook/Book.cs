@@ -5,7 +5,7 @@ namespace Gradebook
 {
     public class Book
     {
-        //class constructor
+        //class constructor. Constructors can be overloaded.
         public Book(string name)
         {
             //this.name = name;//using this explicity to avoid name=name
@@ -13,6 +13,8 @@ namespace Gradebook
             grades = new List<double>();//initilaization
             high_grade = double.MinValue;//representes the smallest positive double aviable. primer value. Also Math.Max(num, reference) can be used
             low_grade = double.MaxValue;
+            category = "Design"; //Can be seted and modified only inside a constructor
+            const string ISBN = "7006GFDY8HHf653KJ7D";//Constant inmutable during objects lifetime. They are considered static members so outside the class you have to call the with:  ClassNAme.CONSTNAME
         }
 
         //Behavior-methods
@@ -147,5 +149,7 @@ namespace Gradebook
         public char letter_grade;
         private string name;//backing field for the name property
         public string Name { get; set; } //name AUTO-property(Interface for a private field)
+        readonly string category;//Only modified inside a constructor
+        
     }
 }

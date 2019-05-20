@@ -12,6 +12,12 @@ namespace Gradebook
             //I need to ask the user for enter as many grades as he needs.
             var providing_grades = true;
             var grades = book.GetGrades();
+
+            //using constant 
+            Console.WriteLine("The curent gradebook is:");
+            Console.WriteLine($"Gradebook name: {book.Name}");
+            Console.WriteLine("The ISBN is: {Book.ISBN}");//Calling a CONSTANT (static member) with the ClassName.CONSTANT
+
             do
             {   
                 Console.WriteLine("Do you want to enter a grade?(y/n)");
