@@ -146,22 +146,6 @@ namespace Gradebook
         public double low_grade;
         public char letter_grade;
         private string name;//backing field for the name property
-        public string Name//name property(Interface for a private field)
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                if(!String.IsNullOrEmpty(value))
-                {
-                    name = value;//this value is implicit variable generated and available with the property declaration.
-                }else {
-                    throw new ArgumentException("$Invalid argument for {nameof(value)}");
-                }
-                
-            }
-        }
+        public string Name { get; set; } //name AUTO-property(Interface for a private field)
     }
 }
