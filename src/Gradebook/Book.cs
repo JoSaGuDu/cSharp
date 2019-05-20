@@ -18,10 +18,14 @@ namespace Gradebook
 
         //Behavior-methods
         public void AddGrade(double grade)
-        {
+        {   
             if (grade <= 100 && grade >= 0)
             {
-            grades.Add(grade);
+                grades.Add(grade);
+                if(GradeAdded != null)//if is null means nobody is listening to this event
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else {
                 Console.WriteLine("Invalid Grade");//replaced by the exception management.
@@ -146,9 +150,12 @@ namespace Gradebook
         public double high_grade;
         public double low_grade;
         public char letter_grade;
-        private string name;//backing field for the name property
+       // private string name;//backing field for the name property
         public string Name { get; set; } //name AUTO-property(Interface for a private field)
-        readonly string category;//Only modified inside a constructor
+        public readonly string category;//Only modified inside a constructor
         public const string ISBN = "7006GFDY8HHf653KJ7D";//Constant inmutable during objects lifetime. They are considered static members so outside the class you have to call the with:  ClassNAme.CONSTNAME
+
+        //Adding event listeners
+        public event GradeAddedDelegate GradeAdded;//Definig a delegated field of type GradeAddedDelegate
     }
 }

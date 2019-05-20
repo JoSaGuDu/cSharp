@@ -9,6 +9,9 @@ namespace Gradebook
         static void Main(string[] args)//Command line application entry point
         {
             var book = new Book("first gradebook");
+            //Subscribe book events of type GradeAdded to the handler OnGradeAdded
+            book.GradeAdded += OnGradeAdded;
+
             //I need to ask the user for enter as many grades as he needs.
             var providing_grades = true;
             var grades = book.GetGrades();
@@ -16,6 +19,7 @@ namespace Gradebook
             //using constant 
             Console.WriteLine("The curent gradebook is:");
             Console.WriteLine($"Gradebook name: {book.Name}");
+            Console.WriteLine($"The category of {book.Name} is: {book.category}");
             Console.WriteLine($"The ISBN is: {Book.ISBN}");//Calling a CONSTANT (static member) with the ClassName.CONSTANT
 
             do
@@ -89,6 +93,12 @@ namespace Gradebook
             {
                 Console.WriteLine("Hello Mr. NoValuePassed!");
             }
+        }
+
+        //Handling events: defining handlers
+        static void OnGradeAdded(object sender, EventArgs theEvent)
+        {
+            Console.WriteLine("EVENT!! A grade was added");
         }
     }
 }
