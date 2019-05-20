@@ -52,25 +52,20 @@ namespace Gradebook
             }
         }
         //I need to compute the statistics
-        public double CalculateAvg
+        public double CalculateAvg()
         {
-            get
-            {
-                var result = 0.0;
+            var result = 0.0;
 
-                foreach (double grade in grades)
-                {
-                    result += grade;
-                }
-                result /= grades.Count;
-                return Math.Floor(result * 100) / 100;
-            }
-        }
-        public double CalcHigherGrade
-        {
-            get
+            foreach (double grade in grades)
             {
-                foreach (double grade in grades)
+                result += grade;
+            }
+            result /= grades.Count;
+            return Math.Floor(result * 100) / 100;
+        }
+        public double CalcHigherGrade()
+        {
+            foreach (double grade in grades)
                 {
                     if (grade >= high_grade)
                     {
@@ -78,23 +73,19 @@ namespace Gradebook
                     }
                 }
 
-                return high_grade;
-            }
+            return high_grade;
         }
-        public double CalclowGrade
+        public double CalclowGrade()
         {
-            get
+            foreach (double grade in grades)
             {
-                foreach (double grade in grades)
+                if (grade <= low_grade)
                 {
-                    if (grade <= low_grade)
-                    {
-                        low_grade = grade;
-                    }
+                    low_grade = grade;
                 }
-
-                return low_grade;
             }
+
+            return low_grade;
         }
 
         public char CalcLetterGrade(double grade)
@@ -130,9 +121,9 @@ namespace Gradebook
         public Statistics GetStatistics()
         {
             var result = new Statistics();
-            result.Average = this.CalculateAvg;
-            result.HigherGrade = this.CalcHigherGrade;
-            result.LowerGrade = this.CalclowGrade;
+            result.Average = this.CalculateAvg();
+            result.HigherGrade = this.CalcHigherGrade();
+            result.LowerGrade = this.CalclowGrade();
             result.LetterAVG = this.CalcLetterGrade(result.Average);
             return result;
         }
@@ -149,11 +140,28 @@ namespace Gradebook
         {
             return grades;
         }
-        //State-fields: don't admint implicit typing var varName = new typeName<type>()
+        //State / fields: don't admint implicit typing var varName = new typeName<type>()
         private List<double> grades;//definition
-        public string Name;
         public double high_grade;
         public double low_grade;
         public char letter_grade;
+        private string name;//backing field for the name property
+        public string Name//name property(Interface for a private field)
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if(!String.IsNullOrEmpty(value))
+                {
+                    name = value;//this value is implicit variable generated and available with the property declaration.
+                }else {
+                    throw new ArgumentException("$Invalid argument for {nameof(value)}");
+                }
+                
+            }
+        }
     }
 }
