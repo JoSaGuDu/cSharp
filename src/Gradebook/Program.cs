@@ -16,7 +16,7 @@ namespace Gradebook
             //using constant 
             Console.WriteLine("The curent gradebook is:");
             Console.WriteLine($"Gradebook name: {book.Name}");
-            Console.WriteLine("The ISBN is: {Book.ISBN}");//Calling a CONSTANT (static member) with the ClassName.CONSTANT
+            Console.WriteLine($"The ISBN is: {Book.ISBN}");//Calling a CONSTANT (static member) with the ClassName.CONSTANT
 
             do
             {   
