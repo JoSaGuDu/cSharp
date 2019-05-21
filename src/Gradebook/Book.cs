@@ -5,7 +5,10 @@ namespace Gradebook
     //Book is a named object
     public class Book : NamedObject
     {
-         public Book(string name)//class' constructor. Constructors can be overloaded.
+        //class' constructor. Constructors can be overloaded.
+        //Chaining constructors with :base(parameterRequiredByBaseCalssName constructor).
+         public Book(string name) : base(name) 
+         
         {
             //this.name = name;//using this explicity to avoid name=name
             Name = name;//Changed into public property so is Capitalized and dont need the use of this to diferentiate from name
