@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-
 namespace Gradebook
 {
-    public class Book
+    //Book is a named object
+    public class Book : NamedObject
     {
-        //class constructor. Constructors can be overloaded.
-        public Book(string name)
+         public Book(string name)//class' constructor. Constructors can be overloaded.
         {
             //this.name = name;//using this explicity to avoid name=name
             Name = name;//Changed into public property so is Capitalized and dont need the use of this to diferentiate from name
@@ -151,7 +150,7 @@ namespace Gradebook
         public double low_grade;
         public char letter_grade;
        // private string name;//backing field for the name property
-        public string Name { get; set; } //name AUTO-property(Interface for a private field)
+        //public string Name { get; set; } //name AUTO-property(Interface for a private field). Replaced by inheritance of a named object base class
         public readonly string category;//Only modified inside a constructor
         public const string ISBN = "7006GFDY8HHf653KJ7D";//Constant inmutable during objects lifetime. They are considered static members so outside the class you have to call the with:  ClassNAme.CONSTNAME
 
